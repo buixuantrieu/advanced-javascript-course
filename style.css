@@ -1,0 +1,165 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+img {
+  width: 100%;
+}
+
+.container {
+  background-color: #c03540;
+  min-height: 300vh;
+}
+
+/* header */
+
+/*
+
+* Gap: Khoảng cách các phần tử trong Flex box
+* Padding: khoảng cách từ phần cha đến phần tửu con
+* Margin: Khoảng cách từ phần tử cha đến phần tử bên ngoài
+* Align-item: Sắp xếp các phần từ bên trong flex theo chiều dọc
+* Position fixed: Cố định vị trí dựa trên màn hình
+* Absolute Xác định vị trí dựa trên thẻ cha gần nhất có position l;à relative hoặc absolute
+*/
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.header--logo {
+  width: 77px;
+}
+
+.header--nav {
+  display: flex;
+  gap: 16px;
+}
+.header--nav__item {
+  color: white;
+  text-transform: uppercase;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+}
+
+.header--nav__item i {
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.604);
+}
+
+.header--button {
+  color: white;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+/* Hero section */
+
+.hero--section__container {
+  height: 100vh;
+  padding-top: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero--section__beanz__logo {
+  /* width: 70vw; */
+  position: relative;
+  animation: ScaleAnimation 500ms linear forwards, RunLogo 3s linear infinite;
+}
+
+.hero--section__icon {
+  position: absolute;
+}
+
+.tiktok {
+  width: 64px;
+  top: 45%;
+  left: -50px;
+  border-radius: 15px;
+  transform: rotate(-15deg) scale(1);
+  transition: transform 300ms ease-in-out;
+}
+.tiktok:hover {
+  transform: rotate(-15deg) scale(1.2);
+  cursor: pointer;
+}
+.instagram {
+  width: 50px;
+  border-radius: 15px;
+  top: -12px;
+  right: 7%;
+  transform: rotate(10deg) scale(1);
+  transition: transform 300ms ease-in-out;
+}
+
+.instagram:hover {
+  cursor: pointer;
+  transform: rotate(10deg) scale(1.1);
+}
+
+.x-icon {
+  top: 40%;
+  right: -70px;
+  border-radius: 15px;
+  transform: rotate(15deg) scale(1);
+  width: 56px;
+  transition: transform 300ms ease-in-out;
+}
+
+.x-icon:hover {
+  cursor: pointer;
+  transform: rotate(15deg) scale(1.2);
+}
+
+.figure--container {
+  position: absolute;
+  height: 18vw;
+  width: 90vw;
+  top: 70%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+/* Keyframe: Dùng làm animation*/
+
+@keyframes ScaleAnimation {
+  from {
+    width: 400px;
+  }
+
+  to {
+    width: 70vw;
+  }
+}
+
+@keyframes RunLogo {
+  0% {
+    transform: translateY(4px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+  100% {
+    transform: translateY(4px);
+  }
+}
+
+/* scale nhân vật dùng transform và transition 
+Tên nhật vật dùng absolute.. thẻ bọc ngoài là  relative
+Mặc định dispaly: none
+hover vào Nhân vậy thì sẽ cho  tên nhân vật dispaly block
+*/
