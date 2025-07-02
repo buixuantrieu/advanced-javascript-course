@@ -55,36 +55,62 @@ const newProductList = productList.map((item, index) => {
 const formElement = document.getElementById("form");
 const nameElement = document.getElementById("name");
 const nameList = [];
-const listElement = document.querySelector("ul");
+let indexEdit = -1;
+
+const editName = (name, index) => {
+  nameElement.value = name;
+  indexEdit = index;
+};
+const bodyTable = document.querySelector("tbody");
 formElement.onsubmit = (event) => {
   event.preventDefault();
   let listItem = "";
   const nameVale = nameElement.value;
-  nameList.push(nameVale);
-  nameList.forEach((item, index) => {
+  if (indexEdit < 0) {
+    nameList.push(nameVale);
+  } else {
+    nameList[indexEdit] = nameVale;
+    indexEdit = -1;
+  }
+  //lặp mảng danh sách tên
+  nameList.forEach((name, index) => {
     listItem += `
-    <li class="list--item">
-      <span>${item}</span>
-      <span onclick="deleteItem(${index})">
-        <i class='bxr  bx-trash-alt'></i>
-      </span>
-    </li>`;
+    <tr>
+        <td>${name}</td>
+        <td>
+          <div style="display: flex; justify-content: end; gap:4px;">
+          <span onclick="editName('${name}',${index})"> 
+              <i class='bxr  bx-edit-alt'  ></i> 
+            </span>
+            <span onclick="deleteItem(${index})">
+              <i class='bxr  bx-trash-alt'></i>
+            </span>
+          </div>
+        </td>
+      </tr>`;
   });
-  listElement.innerHTML = listItem;
+  bodyTable.innerHTML = listItem;
   nameElement.value = "";
 };
 const deleteItem = (index) => {
   nameList.splice(index, 1);
 
   let listItem = "";
-  nameList.forEach((item, index) => {
+  nameList.forEach((name, index) => {
     listItem += `
-    <li class="list--item">
-      <span>${item}</span>
-      <span onclick="deleteItem(${index})">
-        <i class='bxr  bx-trash-alt'></i>
-      </span>
-    </li>`;
+    <tr>
+        <td>${name}</td>
+        <td>
+          <div style="display: flex; justify-content: end; gap:4px;">
+            <span> 
+              <i class='bxr  bx-edit-alt'  ></i> 
+            </span>
+            <span onclick="deleteItem(${index})">
+              <i class='bxr  bx-trash-alt'></i>
+            </span>
+          </div>
+        </td>
+      </tr>`;
   });
-  listElement.innerHTML = listItem;
+  bodyTable.innerHTML = listItem;
 };

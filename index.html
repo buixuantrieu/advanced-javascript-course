@@ -13,9 +13,25 @@
     align-items: center;
     gap: 40px;
   }
+
+  table thead td {
+    font-weight: bold;
+
+  }
+
+  td {
+
+    border-bottom: 1px solid;
+    padding: 4px;
+    padding-left: 8px;
+  }
+
+  table {
+    border-collapse: collapse;
+  }
 </style>
 
-<body>
+<body style="width: 50%; margin: 50px auto;">
   <form id="form">
     <!-- Label là element, For là attribute  -->
     <div>
@@ -28,6 +44,17 @@
   <ul>
 
   </ul>
+  <table>
+    <thead>
+      <tr>
+        <td>Name</td>
+        <td>Thao tác</td>
+      </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
 </body>
 <script src="./ss4.js"></script>
 
