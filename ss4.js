@@ -51,66 +51,58 @@ const newProductList = productList.map((item, index) => {
 // });
 
 // console.log(productList);
+const bodyTable = document.querySelector("tbody");
+const renderUI = (arr) => {
+  let listItem = "";
+  arr.forEach((name, index) => {
+    listItem += `
+    <tr>
+        <td>${name}</td>
+        <td>
+          <div style="display: flex; justify-content: end; gap:4px;">
+          <span >
+              <i class='bxr  bx-edit-alt'  ></i>
+            </span>
+            <span >
+              <i class='bxr  bx-trash-alt'></i>
+            </span>
+          </div>
+        </td>
+      </tr>`;
+  });
+  bodyTable.innerHTML = listItem;
+};
 
 const formElement = document.getElementById("form");
+
 const nameElement = document.getElementById("name");
-const nameList = [];
-let indexEdit = -1;
+const nameList = ["Nguyễn Văn An", "Trần Thị Bình", "Lê Thị Chi", "Phạm Văn Dũng", "Hoàng Thị Hà", "Vũ Thị Hương", "Đặng Gia Khánh", "Bùi Ngọc Linh"];
 
-const editName = (name, index) => {
-  nameElement.value = name;
-  indexEdit = index;
-};
-const bodyTable = document.querySelector("tbody");
-formElement.onsubmit = (event) => {
-  event.preventDefault();
-  let listItem = "";
-  const nameVale = nameElement.value;
-  if (indexEdit < 0) {
-    nameList.push(nameVale);
-  } else {
-    nameList[indexEdit] = nameVale;
-    indexEdit = -1;
-  }
-  //lặp mảng danh sách tên
-  nameList.forEach((name, index) => {
-    listItem += `
-    <tr>
-        <td>${name}</td>
-        <td>
-          <div style="display: flex; justify-content: end; gap:4px;">
-          <span onclick="editName('${name}',${index})"> 
-              <i class='bxr  bx-edit-alt'  ></i> 
-            </span>
-            <span onclick="deleteItem(${index})">
-              <i class='bxr  bx-trash-alt'></i>
-            </span>
-          </div>
-        </td>
-      </tr>`;
-  });
-  bodyTable.innerHTML = listItem;
-  nameElement.value = "";
-};
-const deleteItem = (index) => {
-  nameList.splice(index, 1);
+renderUI(nameList);
 
-  let listItem = "";
-  nameList.forEach((name, index) => {
-    listItem += `
-    <tr>
-        <td>${name}</td>
-        <td>
-          <div style="display: flex; justify-content: end; gap:4px;">
-            <span> 
-              <i class='bxr  bx-edit-alt'  ></i> 
-            </span>
-            <span onclick="deleteItem(${index})">
-              <i class='bxr  bx-trash-alt'></i>
-            </span>
-          </div>
-        </td>
-      </tr>`;
-  });
-  bodyTable.innerHTML = listItem;
+formElement.onsubmit = (e) => {
+  e.preventDefault();
+  const keySearch = nameElement.value;
+  const searchList = nameList.filter((item, index) => item.toLowerCase().includes(keySearch.toLowerCase()));
+  renderUI(searchList);
+};
+
+const sum = (a, b) => console.log(Number(a) + Number(b));
+
+// setTimeout(() => {
+//   console.log("set time out");
+// }, 5000);
+
+// setInterval(() => {
+//   console.log("set time out");
+// }, 1000);
+
+const buttonElement = document.querySelector("#add");
+const buttonSearch = document.querySelector("#search");
+buttonElement.onclick = () => {
+  console.log("add");
+};
+
+buttonSearch.onclick = () => {
+  console.log("search");
 };
