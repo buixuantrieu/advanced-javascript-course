@@ -1,0 +1,17 @@
+{
+  "users": [
+    {
+      "userName": "xuantrieu",
+      "email": "trieuuser@gmail.com",
+      "password": "Bxt2312",
+      "id": 1
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Áo thun",
+      "price": 200000
+    }
+  ]
+}
