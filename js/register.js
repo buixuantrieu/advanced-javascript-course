@@ -45,6 +45,19 @@ formRegister.onsubmit = async (event) => {
       email: emailValue.trim(),
       password: passwordValue.trim(),
     };
-    await axios.post("http://localhost:3000/users", data);
+
+    const user = await axios.get("http://localhost:3000/users", {
+      params: {
+        userName: userNameValue.trim(),
+      },
+    });
+
+    if (user.data.length == 0) {
+      await axios.post("http://localhost:3000/users", data);
+      alert("Đăng kí tài khoản thành công!");
+      window.location.href = "http://127.0.0.1:5500/login.html";
+    } else {
+      showError(userName, "Tài khoản đã tồn tại!");
+    }
   }
 };

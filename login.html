@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+  <div class="flex justify-center items-center min-h-[100vh] bg-stone-200">
+    <div class="flex w-[800px] shadow rounded-[8px]">
+      <div class="flex-1 bg-red-50 p-8">
+        <h3 class="text-center font-medium text-[24px]">Đăng nhập</h3>
+        <form id="form-login">
+          <div>
+            <label for="">Tên tài khoản:</label>
+            <input id="user-name" class="border border-gray-400 p-1 rounded w-full" type="text">
+            <div class="error-message text-red-400 text-[13px] mt-1 min-h-[20px]"></div>
+          </div>
+          <div>
+            <label for="">Mật khẩu:</label>
+            <input id="password" class="border border-gray-400 p-1 rounded w-full" type="text">
+            <div class="error-message text-red-400 text-[13px] mt-1 min-h-[20px]">
+            </div>
+          </div>
+          <button type="submit" class="w-full text-white bg-black border p-1 rounded cursor-pointer">Đăng Nhập</button>
+        </form>
+      </div>
+      <div class="flex-1 bg-white flex justify-center items-center">
+        <img src="https://img.freepik.com/premium-vector/secure-login-form-page-with-password-computer-padlock-3d-vector-icon-cartoon-minimal-style_365941-1119.jpg?semt=ais_items_boosted&w=740"
+          alt="">
+      </div>
+    </div>
+  </div>
+</body>
+
+<script src="./js/login.js">
+
+</script>
+
+</html>

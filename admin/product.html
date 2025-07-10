@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+</head>
+<style>
+  .display-none {
+    display: none;
+  }
+</style>
+
+<body>
+  <div id="box-add" class="flex justify-center items-center min-h-[100vh] fixed z-[100] inset-0 bg-black/50 display-none">
+    <form class="p-8 rounded-[8px] shadow w-[350px] bg-white" id="form-product">
+      <div class="flex justify-end"><span onclick="toggleBoxAdd()">x</span></div>
+      <h5 class="font-bold text-center mb-4">Thêm sản phẩm</h5>
+      <div class="flex flex-col gap-[4px]">
+        <label class="text-[14px]" for="">Tên sản phẩm: </label>
+        <input id="name" class="p-1 w-full rounded shadow" type="text">
+      </div>
+      <div class="flex flex-col gap-[4px]">
+        <label class="text-[14px]" for="">Giá: </label>
+        <input id="price" class="p-1 w-full rounded shadow" type="text">
+      </div>
+      <div class="flex flex-col gap-[4px]">
+        <label class="text-[14px]" for="">Mô tả: </label>
+        <input id="description" class="p-1 w-full rounded shadow" type="text">
+      </div>
+      <div class="flex flex-col gap-[4px]">
+        <label class="text-[14px]" for="">Ảnh sản phẩm: </label>
+        <label class="text-[14px]" for="image">
+          <i class='bxr  bx-arrow-out-up-square-half text-[24px]'></i>
+        </label>
+        <input accept="image/png, image/gif, image/jpeg" id="image" hidden class="p-1 w-full rounded shadow" type="file">
+        <img id="preview" src="" alt="" class="w-[30%] rounded-[8px]">
+      </div>
+      <button class="w-full mt-4 py-1 bg-black rounded text-white">Thêm sản phẩm</button>
+    </form>
+  </div>
+
+  <button class="bg-black text-white py-1 px-4 my-8 ml-4 rounded" onclick="toggleBoxAdd()">Thêm sản phẩm</button>
+  <div class="flex flex-col">
+    <div class="-m-1.5 overflow-x-auto">
+      <div class="p-1.5 min-w-full inline-block align-middle">
+        <div class="overflow-hidden">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead>
+              <tr>
+                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Tên sản phẩm</th>
+                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Giá</th>
+                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Hình ảnh</th>
+                <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase">Thao tác</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../js//product.js"></script>
+
+</html>
