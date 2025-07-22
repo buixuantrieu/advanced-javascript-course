@@ -19,7 +19,7 @@
   <div id="box-add" class="flex justify-center items-center min-h-[100vh] fixed z-[100] inset-0 bg-black/50 display-none">
     <form class="p-8 rounded-[8px] shadow w-[350px] bg-white" id="form-product">
       <div class="flex justify-end"><span onclick="toggleBoxAdd()">x</span></div>
-      <h5 class="font-bold text-center mb-4">Thêm sản phẩm</h5>
+      <h5 class="font-bold text-center mb-4" id="title-popup">Thêm sản phẩm</h5>
       <div class="flex flex-col gap-[4px]">
         <label class="text-[14px]" for="">Tên sản phẩm: </label>
         <input id="name" class="p-1 w-full rounded shadow" type="text">
@@ -40,7 +40,7 @@
         <input accept="image/png, image/gif, image/jpeg" id="image" hidden class="p-1 w-full rounded shadow" type="file">
         <img id="preview" src="" alt="" class="w-[30%] rounded-[8px]">
       </div>
-      <button class="w-full mt-4 py-1 bg-black rounded text-white">Thêm sản phẩm</button>
+      <button class="w-full mt-4 py-1 bg-black rounded text-white" id="button-submit">Thêm sản phẩm</button>
     </form>
   </div>
 
@@ -67,6 +67,6 @@
     </div>
   </div>
 </body>
-<script src="../js//product.js"></script>
+<script src="../js/product.js"></script>
 
 </html>

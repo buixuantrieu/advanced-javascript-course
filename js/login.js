@@ -39,7 +39,13 @@ formLogin.onsubmit = async (event) => {
   });
 
   if (!!user.data.length) {
-    localStorage.setItem("userData", JSON.stringify(user.data[0]));
+    const userData = user.data[0];
+    localStorage.setItem("userData", JSON.stringify(userData));
+    if (userData.role === "admin") {
+      window.location.href = "/admin/product.html";
+    } else {
+      window.location.href = "/index.html";
+    }
   } else {
     ("Đăng nhập thất bại");
   }

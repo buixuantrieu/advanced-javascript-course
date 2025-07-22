@@ -44,6 +44,7 @@ formRegister.onsubmit = async (event) => {
       userName: userNameValue.trim(),
       email: emailValue.trim(),
       password: passwordValue.trim(),
+      role: "user",
     };
 
     const user = await axios.get("http://localhost:3000/users", {
