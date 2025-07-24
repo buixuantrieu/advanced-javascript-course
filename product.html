@@ -7,6 +7,7 @@
   <title>Danh sách sản phẩm</title>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
@@ -16,18 +17,40 @@
       <a href="/" class="hover:text-blue-500 cursor-pointer">Trang chủ</a>
       <a href="/product.html" class="hover:text-blue-500 cursor-pointer">Sản phẩm</a>
     </div>
-    <div id="user-name">
+    <div class="flex gap-2 items-center">
+      <div class="relative">
+        <i class='bxr  bx-cart text-[24px] cursor-pointer'></i>
+        <div class="absolute right-[-4px] top-[-4px] text-[11px] bg-red-600 w-[16px] text-white flex items-center justify-center aspect-[1/1] rounded-[50%]">
+          <div id="quantity">
+            0
+          </div>
+          <div class="absolute bg-gray-200 rounded w-[500px] h-[300px] top-[28px] right-0 text-black p-4 text-[16px]">
+            <div class="mb-4 font-bold">
+              Giỏ hàng
+            </div>
+            <div>
+              <div class="grid grid-cols-4">
+                <div>Tên sản phẩm</div>
+                <div>Số lượng</div>
+                <div>Giá</div>
+                <div>Tổng Tiền</div>
+              </div>
+              <div class="grid grid-cols-4">
+                <div>Naruto</div>
+                <div>3</div>
+                <div>200 Vnd</div>
+                <div>600 Vnd</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="user-name">
 
+      </div>
     </div>
   </header>
-  <div class="p-8" id="product-container">
-    <div class="w-[250px] border border-gray-300 rounded p-2">
-      <img class="w-full aspect-[3/2] object-cover" src="https://cdn.dribbble.com/userupload/26322604/file/original-dcead8919d7ce154b4ece5d8b2a09ac1.png?resize=400x0" alt="">
-      <div>Iphone</div>
-      <div class="text-red-300">99.000 vnd</div>
-      <div class="mt-4 text-center bg-gray-200 py-1 rounded cursor-pointer">Thêm giỏ hàng</div>
-    </div>
-  </div>
+  <div class="p-8 grid grid-cols-4 gap-4" id="product-container"></div>
 </body>
 <script src="./js//productList.js"></script>
 
