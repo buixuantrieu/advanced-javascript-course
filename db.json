@@ -66,21 +66,32 @@
     },
     {
       "userId": 2,
-      "productId": 1,
-      "quantity": 4,
-      "id": 4
-    },
-    {
-      "userId": 2,
       "productId": 2,
-      "quantity": 6,
+      "quantity": 4,
       "id": 5
     },
     {
       "userId": 2,
-      "productId": 3,
-      "quantity": 2,
+      "productId": 1,
+      "quantity": 1,
       "id": 6
+    },
+    {
+      "userId": 2,
+      "productId": 3,
+      "quantity": 1,
+      "id": 7
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "userId": 2,
+      "name": "Bui Xuan Trieu",
+      "phone": "0901927763",
+      "address": "30/4, Hoa Cuong, Hai Chau, Da Nang",
+      "totalPrice": 1046397,
+      "status": "pending"
     }
   ]
 }

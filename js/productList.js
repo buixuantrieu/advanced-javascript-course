@@ -26,7 +26,6 @@ const getCartDetail = async () => {
       userId: userData.id,
     },
   });
-  console.log(data);
 };
 
 const addProduct = async (productId) => {
@@ -79,7 +78,9 @@ const getData = async () => {
       <div onclick="addProduct(${product.id})" class="mt-4 text-center bg-gray-200 py-1 rounded cursor-pointer">Thêm giỏ hàng</div>
     </div>
     `;
-    productContainer.innerHTML = productHtml;
+    if (productContainer) {
+      productContainer.innerHTML = productHtml;
+    }
   });
 };
 
