@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lịch sử đặt hàng</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+  <header class="flex justify-between p-4">
+    <div>Javascript</div>
+    <div class="flex gap-4">
+      <a href="/" class="hover:text-blue-500 cursor-pointer">Trang chủ</a>
+      <a href="/product.html" class="hover:text-blue-500 cursor-pointer">Sản phẩm</a>
+    </div>
+    <a href="./cart.html" class="flex gap-2 items-center">
+      <div class="relative">
+        <i class='bxr  bx-cart text-[24px] cursor-pointer'></i>
+        <div class="absolute right-[-4px] top-[-4px] text-[11px] bg-red-600 w-[16px] text-white flex items-center justify-center aspect-[1/1] rounded-[50%]">
+          <div id="quantity">
+            0
+          </div>
+        </div>
+      </div>
+      <div id="user-name">
+      </div>
+    </a>
+  </header>
+  <main>
+    <div class="grid grid-cols-12 gap-4 p-4">
+      <div class="col-span-12 shadow rounded">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead>
+            <tr>
+              <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Tên khách hàng</th>
+              <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Địa chỉ</th>
+              <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Số điện thoại</th>
+              <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Tổng tiền</th>
+              <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Trạng thái đơn hàng</th>
+              <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Thao tác</th>
+            </tr>
+          </thead>
+          <tbody id="tableContent" class="divide-y divide-gray-200">
+            <tr>
+              <td>xuân</td>
+              <td>Đà Nẵng</td>
+              <td>0900239</td>
+              <td>1212.3434 VND</td>
+              <td>đANG CHỜ XÁC NHẬN</td>
+              <td>Hủy đơn Hàng</td>
+            </tr>
+
+            <tr>
+              <td colspan="6">5
+                <table class="min-w-full">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Tên sản phẩm</th>
+                      <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Hình ảnh</th>
+                      <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Số lượng</th>
+                      <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Giá</th>
+                      <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Tổng tiền</th>
+                    </tr>
+                  </thead>
+                </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+  </main>
+</body>
+<script src="./js/productList.js"></script>
+<script src="./js//order-history.js"></script>
+
+
+</html>

@@ -47,51 +47,73 @@
   ],
   "carts": [
     {
-      "userId": 3,
-      "productId": 1,
-      "quantity": 8,
+      "userId": 2,
+      "productId": 2,
+      "quantity": 1,
       "id": 1
     },
     {
-      "userId": 3,
-      "productId": 2,
-      "quantity": 5,
-      "id": 2
-    },
-    {
-      "userId": 3,
-      "productId": 3,
-      "quantity": 7,
-      "id": 3
-    },
-    {
-      "userId": 2,
-      "productId": 2,
-      "quantity": 4,
-      "id": 5
-    },
-    {
       "userId": 2,
       "productId": 1,
       "quantity": 1,
-      "id": 6
-    },
-    {
-      "userId": 2,
-      "productId": 3,
-      "quantity": 1,
-      "id": 7
+      "id": 3
     }
   ],
   "orders": [
     {
-      "id": 1,
       "userId": 2,
       "name": "Bui Xuan Trieu",
       "phone": "0901927763",
       "address": "30/4, Hoa Cuong, Hai Chau, Da Nang",
-      "totalPrice": 1046397,
-      "status": "pending"
+      "totalPrice": 448323,
+      "status": "pending",
+      "id": 1
+    },
+    {
+      "userId": 2,
+      "name": "Nguyễn Minh Sơn",
+      "phone": "0901927763",
+      "address": "Ba Đình, Hà Nội",
+      "totalPrice": 2440428,
+      "status": "pending",
+      "id": 2
+    }
+  ],
+  "orderDetails": [
+    {
+      "orderId": 1,
+      "quantity": 1,
+      "productId": 2,
+      "price": 199323,
+      "id": 1
+    },
+    {
+      "orderId": 1,
+      "quantity": 1,
+      "productId": 3,
+      "price": 249000,
+      "id": 2
+    },
+    {
+      "orderId": 2,
+      "quantity": 1,
+      "productId": 2,
+      "price": 199323,
+      "id": 3
+    },
+    {
+      "orderId": 2,
+      "quantity": 9,
+      "productId": 3,
+      "price": 249000,
+      "id": 4
+    },
+    {
+      "orderId": 2,
+      "quantity": 1,
+      "productId": 1,
+      "price": 105,
+      "id": 5
     }
   ]
 }

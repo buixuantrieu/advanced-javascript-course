@@ -14,15 +14,15 @@ const changeQuantity = async (quantity, id) => {
   await axios.patch(`http://localhost:3000/carts/${id}`, {
     quantity: Number(quantity),
   });
-  getCat();
+  getCart();
 };
 
 const deleteCart = async (id) => {
   await axios.delete(`http://localhost:3000/carts/${id}`);
-  getCat();
+  getCart();
 };
 
-const getCat = async () => {
+const getCart = async () => {
   let tableContent = "";
   let totalPrice = 0;
 
@@ -68,11 +68,10 @@ const getCat = async () => {
   totalElement.innerHTML = `${totalPrice.toLocaleString()} VND`;
 };
 
-getCat();
+getCart();
 
 buttonSubmit.onclick = async () => {
   const orderData = {
-    id: 1,
     userId: user.id,
     name: nameElement.value,
     phone: phone.value,
@@ -80,29 +79,44 @@ buttonSubmit.onclick = async () => {
     totalPrice: total,
     status: "pending",
   };
-  const orderDetails = [
-    {
-      id: 4,
-      orderId: 1,
-      quantity: 4,
-      productId: 1,
-      price: 99,
+  fetch("http://localhost:3000/orders", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
     },
-    {
-      id: 4,
-      orderId: 1,
-      quantity: 4,
-      productId: 1,
-      price: 99000,
-    },
-    {
-      id: 4,
-      orderId: 1,
-      quantity: 4,
-      productId: 1,
-      price: 99,
-    },
-  ];
-  const order = await axios.post("http://localhost:3000/orders", orderData);
-  const orderId = order.id;
+    body: JSON.stringify(orderData),
+  })
+    .then((res) => res.json())
+    .then((order) => {
+      const orderId = order.id;
+
+      const promises = cartList.map((cart, index) => {
+        const newOrderDetail = {
+          orderId: orderId,
+          quantity: cart.quantity,
+          productId: cart.productId,
+          price: cart.product.price,
+        };
+
+        return fetch("http://localhost:3000/orderDetails", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newOrderDetail),
+        });
+      });
+      return Promise.all(promises);
+    })
+    .then(() => {
+      const deletePromises = cartList.map((cart) => {
+        fetch(`http://localhost:3000/carts/${cart.id}`, {
+          method: "DELETE",
+        });
+      });
+      return Promise.all(deletePromises);
+    })
+    .then(() => {
+      alert("Đặt hàng thành công");
+    });
 };
