@@ -90,7 +90,7 @@ buttonSubmit.onclick = async () => {
     .then((order) => {
       const orderId = order.id;
 
-      const promises = cartList.map((cart, index) => {
+      const createOrderDetails = cartList.map((cart) => {
         const newOrderDetail = {
           orderId: orderId,
           quantity: cart.quantity,
@@ -106,17 +106,17 @@ buttonSubmit.onclick = async () => {
           body: JSON.stringify(newOrderDetail),
         });
       });
-      return Promise.all(promises);
-    })
-    .then(() => {
-      const deletePromises = cartList.map((cart) => {
-        fetch(`http://localhost:3000/carts/${cart.id}`, {
-          method: "DELETE",
+      return Promise.all(createOrderDetails).then(() => {
+        const deleteCarts = cartList.map((cart) => {
+          return fetch(`http://localhost:3000/carts/${cart.id}`, {
+            method: "DELETE",
+          });
         });
+
+        return Promise.all(deleteCarts);
       });
-      return Promise.all(deletePromises);
     })
     .then(() => {
-      alert("Đặt hàng thành công");
+      getCart();
     });
 };

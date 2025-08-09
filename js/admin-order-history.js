@@ -1,16 +1,17 @@
 const tableBody = document.getElementById("tableContent");
 
-const cancelOrder = async (id) => {
+const changeOrderStatus = async (e, id) => {
+  const status = e.value;
   await axios.patch(`http://localhost:3000/orders/${id}`, {
-    status: "canceled",
+    status: status,
   });
+  alert("Thay đổi trạng thái đơn hàng thành công!");
   getOrder();
 };
 
 const getOrder = async () => {
   const { data: orderList } = await axios.get("http://localhost:3000/orders", {
     params: {
-      userId: userData.id,
       _embed: "orderDetails",
     },
   });
@@ -34,41 +35,22 @@ const getOrder = async () => {
                       <td scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
                       ${(item.price * item.quantity).toLocaleString()} VND
                       </td>
-                    </tr>`;
+                    </tr>
+                    `;
     }
-
     content += `<tr class="bg-gray-100">
                <td class="text-[13px] py-4">${order.name}</td>
               <td class="text-[13px] py-4">${order.address}</td>
               <td class="text-[13px] py-4">${order.phone}</td>
               <td class="text-[13px] py-4">${order?.totalPrice?.toLocaleString()} VND</td>
-              <td class="text-[13px] py-4">${
-                order.status == "pending"
-                  ? "Đang chờ xác nhận đơn hàng"
-                  : order.status == "confirm"
-                  ? "Đã xác nhận đơn hàng"
-                  : order.status == "canceled"
-                  ? "Đã hủy đơn hàng"
-                  : order.status == "canceledByAdmin"
-                  ? "Đơn hàng đã bị từ chối"
-                  : order.status == "ship"
-                  ? "Đang giao"
-                  : order.status == "done"
-                  ? "Giao hàng thành công"
-                  : ""
-              }</td>
               <td class="text-[13px] py-4">
-              ${
-                order.status === "pending"
-                  ? `<button onclick="cancelOrder(${order.id})" class="border rounded px-3 py-1 border-red-300 text-red-600" 
-              style="${order.status !== "pending" && "color:gray; border-color:#cbcbcb"}"
-              ${order.status !== "pending" && "disabled"}>
-              Hủy đơn hàng
-              </button>`
-                  : ""
-              }
-
-              ${order.status === "done" ? "<button class='border rounded px-3 py-1 border-blue-500 text-blue-500' >Đánh giá sản phẩm</button>" : ""}
+              <select class="py-1 border rounded" onchange="changeOrderStatus(this,${order.id})">
+              <option value="pending" ${order.status === "pending" && "selected"}>Chưa xác nhận đơn hàng</option>
+               <option value="confirm" ${order.status === "confirm" && "selected"}>Đã xác nhận đơn hàng</option>
+               <option value="ship" ${order.status === "ship" && "selected"}>Đang giao</option>
+               <option value="done" ${order.status === "done" && "selected"}> Đã giao</option>
+               <option value="canceledByAdmin" ${order.status === "canceledByAdmin" && "selected"}>Từ chối đơn hàng</option>
+              </select>
               </td>
             </tr>
             <tr>
